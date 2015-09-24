@@ -1,0 +1,77 @@
+body {
+  padding: 100px;
+
+  background: url(../images/woodcuttingboard.jpg);
+}
+
+a {
+  color: #00B7FF;
+  display: inline;
+}
+
+li
+{
+  display: inline-block;
+  margin-right: 15px;
+
+}
+.login .register {
+
+  display: block;
+}
+
+.navBtn {
+
+  margin-top: 18px;
+}
+
+.jumbotron {
+
+  padding: 0;
+  opacity: 0.85;
+  text-align: center;
+}
+
+nav {
+  padding: none;
+  opacity: 0.85;
+}
+
+input:focus, input:focus {
+  border: 2px solid #900;
+}
+
+#LikedRestaurant {
+
+  display: block;
+}
+
+.logo {
+
+  height: 50px;
+  width:  50px;
+}
+
+input {
+
+}
+
+.login {
+
+  margin-top: 55px;
+}
+
+.generateRestForm{
+
+  padding-left: 320px;
+
+}
+
+.mainGenBtn {
+  margin-top: 25px;
+  margin-left: 235px;
+}
+
+h1 {
+  font-family: 'AndaleMono', 'monospace';
+}

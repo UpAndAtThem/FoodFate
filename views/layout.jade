@@ -1,0 +1,104 @@
+doctype html
+html(ng-app="myApp")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js")
+        script(src="javascripts/app.js")
+        base(href="/")
+    body(ng-controller="navCtrl")
+        nav(class="navbar navbar-default")
+
+            ul(class="navBtn")
+                img(class="logo" src='http://www.restaurantbeeckestijn.nl/images/food-icon-png.png')
+                li(ng-hide="user.username")
+                    a(href='/login' class="btn btn-default rightBtn" ) Login
+                li(ng-show='user.username')
+                    a(href='/main' class="btn btn-default") Main
+                li(ng-hide="user.username")
+                    a(href='/register' class="btn btn-default") Register
+                li(ng-show="user.username")
+                    a(href='/comment' class="btn btn-default") Comment
+                li(ng-show='user.username' class="btn btn-default")
+                    a(ng-click='logout()' href='#' class="rightBtn" ) Logout
+                p(class="navbar-text btn pull-right" ng-show='user.username') Welcome back!
+                P(class="navbar-text btn pull-right" ng-show='user.username') Lets see where we're eating today, {{user.firstName}}!
+
+
+        div(id="Generate" class="jumbotron well")
+            block content
+            div(ng-hide="user.username")
+                h1 LET FATE DECIDE
+                p Can't decide where to eat? We got you covered!
+                p Enter the information below.
+                form(class="generateRestForm")
+                    label(for="stateSelect") State:
+                    select(id="stateSelect" name="stateSelect")
+                        option(value="AL" Alabama)
+                        option(value="AK") Alaska
+                        option(value="AZ") Arizona
+                        option(value="AR") Arkansas
+                        option(value="CA") California
+                        option(value="CO") Colorado
+                        option(value="CT") Connecticut
+                        option(value="DE") Delaware
+                        option(value="DC") District Of Columbia
+                        option(value="FL") Florida
+                        option(value="GA") Georgia
+                        option(value="HI") Hawaii
+                        option(value="ID") Idaho
+                        option(value="IL") Illinois
+                        option(value="IN") Indiana
+                        option(value="IA") Iowa
+                        option(value="KS") Kansas
+                        option(value="KY") Kentucky
+                        option(value="LA") Louisiana
+                        option(value="ME") Maine
+                        option(value="MD") Maryland
+                        option(value="MA") Massachusetts
+                        option(value="MI") Michigan
+                        option(value="MN") Minnesota
+                        option(value="MS") Mississippi
+                        option(value="MO") Missouri
+                        option(value="MT") Montana
+                        option(value="NE") Nebraska
+                        option(value="NV") Nevada
+                        option(value="NH") New Hampshire
+                        option(value="NJ") New Jersey
+                        option(value="NM") New Mexico
+                        option(value="NY") New York
+                        option(value="NC") North Carolina
+                        option(value="ND") North Dakota
+                        option(value="OH") Ohio
+                        option(value="OK") Oklahoma
+                        option(value="OR") Oregon
+                        option(value="PA") Pennsylvania
+                        option(value="RI") Rhode Island
+                        option(value="SC") South Carolina
+                        option(value="SD") South Dakota
+                        option(value="TN") Tennessee
+                        option(value="TX") Texas
+                        option(value="UT") Utah
+                        option(value="VT") Vermont
+                        option(value="VA") Virginia
+                        option(value="WA") Washington
+                        option(value="WV") West Virginia
+                        option(value="WI") Wisconsin
+                        option(value="WY") Wyoming
+
+
+                    label(for="city") City:
+                    input(type="text" name="city" id="city")
+
+                    label(for="foodType") Food Type
+                    select(id="foodType" name="foodType" placeholder="food")
+                        option(value="pizza") Pizza
+                        option(value="burgers") Burgers
+                        option(value="thai") Thai
+                        option(value="sushi") Sushi
+
+                div(class="mainGenBtn")
+                    button(type="submit" id="GenerateFood" class="btn btn-success") LET'S DO THIS!
+
