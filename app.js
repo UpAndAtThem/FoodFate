@@ -60,10 +60,11 @@ app.use(function (err, req, res, next) {
 
 app.use('/private', express.static(path.join(__dirname, 'private')));
 
-app.use('/', routes);
+
 app.use('/api/register', register);
 app.use('/api/login', login);
 app.use('/api/comment', comment);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

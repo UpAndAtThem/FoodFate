@@ -6,6 +6,7 @@ var mongoose = require('mongoose')
     , jsonwebtoken = require('jsonwebtoken')
     , SALT_WORK_FACTOR = 12;
 
+var CommentSchema = require('./comment.js');
 /**
  * User schema
  */
@@ -13,7 +14,15 @@ var UserSchema = new mongoose.Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
     username: {type: String, required: true, index: {unique: true}},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    rest: [{
+        address: String,
+        phone: String,
+        website: String,
+        name: String,
+        id: String,
+        comments: [{type: String}]
+    }]
 });
 
 /**
