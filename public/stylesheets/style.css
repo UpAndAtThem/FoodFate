@@ -75,3 +75,10 @@ input {
 h1 {
   font-family: 'AndaleMono', 'monospace';
 }
+
+
+.commenticon {
+
+  height: 60px;
+  width: 60px;
+}

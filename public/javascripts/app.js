@@ -85,6 +85,20 @@ app.controller('mainCtrl', ['$scope', '$http','$rootScope', function($scope, $ht
 }]);
 
 app.controller('commentCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+
+
+        $http({
+            method: 'GET',
+            url: '/api/comment'
+
+        }).success(function(data) {
+
+            $scope.comments = data;
+
+        });
+
+
+
     $scope.submit = function () {
         $http.post('api/comment', $scope.form)
             .then(function (response) {

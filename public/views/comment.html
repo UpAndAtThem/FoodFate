@@ -31,7 +31,10 @@
 </div>
 <div class="jumbotron">
     <h2>YOUR LIST OF PREVIOUSLY ENJOYED RESTAURANTS</h2>
-    <div ng-repeat="restaurant in restaurants">
-
+    <div ng-repeat="comment in comments">
+        <p><strong>Restaurant: </strong> {{comment.restname}}, <strong> Meal Eaten: </strong> {{comment.mealeaten}}, <strong> Rating: </strong> {{comment.rating}}</p>
+        <p class="additional"> <strong> Additional: </strong> {{comment.additional}}.</p>
+        <img class="commenticon" src="../images/food-icon-png.png" alt="foodicon"/>
     </div>
+
 </div>
