@@ -67,19 +67,13 @@ app.controller('navCtrl', ['authService','$scope','$rootScope','$location', func
 
 app.controller('mainCtrl', ['$scope', '$http','$rootScope', function($scope, $http, $rootScope){
     $scope.search = function(){
-        var apiKey= 'HPZlPZ0VBWGSQAve7AB18w';
-        var url = 'http://api.yelp.com/v2/search/?location=' + $scope.searchterm.city + ', ' + $scope.searchterm.state + '&sort=2&category_filter=' + $scope.searchterm.type
-        console.log(url);
         console.log("the state is",$scope.searchterm.state, "the city is", $scope.searchterm.city, "the type is", $scope.searchterm.type  );
         $http({
             method: 'GET',
-            url: url,
-            params: {
-                api_key: apiKey
-            }
+            url: '/api/yelp?location=' + $scope.searchterm.city + ', ' + $scope.searchterm.state + '&term=' + $scope.searchterm.type
         }).success(function(data) {
-            console.log();
-            console.log(data);
+
+            console.log("this is the data: ",data);
         })
     };
 }]);
@@ -96,6 +90,7 @@ app.controller('commentCtrl', ['$scope', '$http', '$location', function ($scope,
             $scope.comments = data;
 
         });
+
 
 
 

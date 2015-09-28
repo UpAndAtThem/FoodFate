@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 var likedRestaurants = require('../models/comment');
 
-router.get('/*',function(req,res,next){
+router.get('/:rating?',function(req,res,next){
     console.log("entered");
     likedRestaurants.find({}).exec(function(err, restaurant){
         if(err) {
