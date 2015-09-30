@@ -1,4 +1,6 @@
+
 var app = angular.module('myApp', ['ngRoute']);
+
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $httpProvider) {
@@ -66,32 +68,37 @@ app.controller('navCtrl', ['authService','$scope','$rootScope','$location', func
 }]);
 
 app.controller('mainCtrl', ['$scope', '$http','$rootScope', function($scope, $http, $rootScope){
+     $scope.getRandomInt = function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     $scope.search = function(){
+
         console.log("the state is",$scope.searchterm.state, "the city is", $scope.searchterm.city, "the type is", $scope.searchterm.type  );
         $http({
             method: 'GET',
-            url: '/api/yelp?location=' + $scope.searchterm.city + ', ' + $scope.searchterm.state + '&term=' + $scope.searchterm.type
+            url: '/api/yelp?location=' + $scope.searchterm.city + ', ' + $scope.searchterm.state + '&radius_filter=8500&term=' + $scope.searchterm.type
         }).success(function(data) {
 
-            console.log("this is the data: ",data);
+            //console.log("this is the data: ",data);
+            $scope.restaurants = data;
+            $scope.restaurant = data.businesses[$scope.getRandomInt(0, $scope.restaurants.businesses.length-1 )];
+
+            console.log("the single rest is",$scope.restaurant);
+
         })
     };
 }]);
 
 app.controller('commentCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
 
-
         $http({
             method: 'GET',
             url: '/api/comment'
-
         }).success(function(data) {
 
             $scope.comments = data;
-
         });
-
-
 
 
     $scope.submit = function () {

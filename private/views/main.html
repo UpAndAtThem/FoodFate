@@ -67,14 +67,34 @@
 
                 <label for="foodType">Food Type</label>
                 <select id="foodType" name="foodType" placeholder="food" ng-model="searchterm.type">
+                    <option value="restaurants">Restaurants (all types)</option>
                     <option value="pizza">Pizza</option>
                     <option value="burgers">Burgers</option>
                     <option value="thai">Thai</option>
                     <option value="sushi">Sushi</option>
+                    <option value="newamerican">American</option>
+                    <option value="mediterranean">Mediterranean</option>
+                    <option value="sandwiches">Sandwiches</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="italian">Italian</option>
+
                 </select>
             <div>
                 <button type="submit" id="GenerateFood" class="btn btn-success" ng-submit="search()">LET'S DO THIS!</button>
             </div>
             </form>
     </div>
+    <div class="well jumbotron">
+        <p ng-show="restaurant.name">Wand, Wand, Magic, Magic, Poof!  Pack up the car we're going to...</p>
+        <h2>{{restaurant.name}}</h2>
+        <h3 ng-show="restaurant.location.address">{{restaurant.location.address[0]}}, {{restaurant.location.city}}</h3>
+        <img src="{{restaurant.rating_img_url_large}}" alt=""/>
+        <img src="{{restaurant.image_url}}" alt=""/>
+        <p>{{restaurant.display_phone}}</p>
+        <a href="{{restaurant.url}}">{{restaurant.url}}</a>
+
+    </div>
+
+
+
 </div>
