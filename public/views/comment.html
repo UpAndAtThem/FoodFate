@@ -8,31 +8,32 @@
     <form id="likedRestaurant" ng-submit="submit()">
 
             <label for="name">Restaurant Name:</label>
-            <input type="text" ng-model="form.restname" id="name"/>
+            <input type="text" ng-model="form.restname" id="name" required />
 
 
 
             <label for="meal_eaten">Meal Eaten:</label>
-            <input type="text" ng-model="form.mealeaten" id="meal_eaten"/>
+            <input type="text" ng-model="form.mealeaten" id="meal_eaten" required />
 
 
 
             <label for="rating">rating:</label>
-            <input type="number" id="rating" ng-model="form.rating" min="1" max="5">
+            <input type="number" id="rating" ng-model="form.rating" min="1" max="5" required >
 
         <div>
             <textarea ng-model="form.additional" id="additional" rows="5" cols="90"
-                      placeholder="Give additional information about your experience today.."></textarea>
+                      placeholder="Give additional information about your experience today.." required ></textarea>
         </div>
 
-        <input id="SubmitFavorite" type="submit" value="SUBMIT"/>
+        <input id="SubmitFavorite" type="submit" value="SUBMIT" />
+
     </form>
 
 </div>
 <div class="jumbotron">
-    <h2>YOUR LIST OF PREVIOUSLY ENJOYED RESTAURANTS</h2>
+    <h2 class="restlisth2">YOUR LIST OF PREVIOUSLY ENJOYED RESTAURANTS</h2>
     <div ng-repeat="comment in comments">
-        <p><strong>Restaurant: </strong> {{comment.restname}}, <strong> Meal Eaten: </strong> {{comment.mealeaten}}, <strong> Rating: </strong> {{comment.rating}}</p>
+        <p><strong>Restaurant: </strong> {{comment.restname}}  <strong>  Meal Eaten: </strong> {{comment.mealeaten}} <strong>  Rating: </strong> {{comment.rating}}</p>
         <p class="additional"> <strong> Additional: </strong> {{comment.additional}}.</p>
         <img class="commenticon" src="../images/food-icon-png.png" alt="foodicon"/>
     </div>

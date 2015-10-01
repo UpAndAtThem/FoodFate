@@ -104,9 +104,25 @@ app.controller('commentCtrl', ['$scope', '$http', '$location', function ($scope,
     $scope.submit = function () {
         $http.post('api/comment', $scope.form)
             .then(function (response) {
-                //console.log(response);
+                console.log(response);
 
+                $scope.form.restname = '';
+                $scope.form.mealeaten = '';
+                $scope.form.rating = '';
+                $scope.form.additional = '';
+
+            }, function(err) {
+                console.log(err);
             });
+
+        $http({
+            method: 'GET',
+            url: '/api/comment'
+        }).success(function(data) {
+
+            $scope.comments = data;
+        });
+
     }
 }]);
 

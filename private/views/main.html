@@ -80,21 +80,19 @@
 
                 </select>
             <div>
-                <button type="submit" id="GenerateFood" class="btn btn-success" ng-submit="search()">LET'S DO THIS!</button>
+                <button type="submit" id="GenerateFood" class="btn btn-success" ng-hide="restaurant.name" ng-submit="search()">LET'S DO THIS!</button>
+                <button type="submit" id="GenerateFood" class="btn btn-success" ng-show="restaurant.name" ng-submit="search()">THANKS BUT NO THANKS. TRY AGAIN, "FATE"</button>
             </div>
             </form>
     </div>
-    <div class="well jumbotron">
+    <div ng-show="restaurant.name" class="well jumbotron rest">
         <p ng-show="restaurant.name">Wand, Wand, Magic, Magic, Poof!  Pack up the car we're going to...</p>
         <h2>{{restaurant.name}}</h2>
         <h3 ng-show="restaurant.location.address">{{restaurant.location.address[0]}}, {{restaurant.location.city}}</h3>
         <img src="{{restaurant.rating_img_url_large}}" alt=""/>
-        <img src="{{restaurant.image_url}}" alt=""/>
+        <img class="restimg" src="{{restaurant.image_url}}" alt=""/>
         <p>{{restaurant.display_phone}}</p>
         <a href="{{restaurant.url}}">{{restaurant.url}}</a>
-
     </div>
-
-
 
 </div>
