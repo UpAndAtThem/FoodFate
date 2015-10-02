@@ -31,11 +31,15 @@
 
 </div>
 <div class="jumbotron">
-    <h2 class="restlisth2">YOUR LIST OF PREVIOUSLY ENJOYED RESTAURANTS</h2>
+    <h2 class="restlisth2">YOUR LIST OF REVIEWED RESTAURANTS</h2>
     <div ng-repeat="comment in comments">
         <p><strong>Restaurant: </strong> {{comment.restname}}  <strong>  Meal Eaten: </strong> {{comment.mealeaten}} <strong>  Rating: </strong> {{comment.rating}}</p>
         <p class="additional"> <strong> Additional: </strong> {{comment.additional}}.</p>
-        <img class="commenticon" src="../images/food-icon-png.png" alt="foodicon"/>
+        <button ng-click="deleteComment(comment._id, $index)">^ Delete Comment ^</button>
+        <div>
+            <img class="commenticon" src="../images/food-icon-png.png" alt="foodicon"/>
+        </div>
+
     </div>
 
 </div>

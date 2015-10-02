@@ -8,7 +8,7 @@ router.post('/', function(req, res, next) {
     Users.Create(req.body, function(err, user){
 
         if(err){
-            res.status(400).send(err.message);
+            next(err);
         } else{
             res.send(200);
 

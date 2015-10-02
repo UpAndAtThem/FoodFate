@@ -80,7 +80,6 @@ app.controller('mainCtrl', ['$scope', '$http','$rootScope', function($scope, $ht
             url: '/api/yelp?location=' + $scope.searchterm.city + ', ' + $scope.searchterm.state + '&radius_filter=8500&term=' + $scope.searchterm.type
         }).success(function(data) {
 
-            //console.log("this is the data: ",data);
             $scope.restaurants = data;
             $scope.restaurant = data.businesses[$scope.getRandomInt(0, $scope.restaurants.businesses.length-1 )];
 
@@ -100,6 +99,19 @@ app.controller('commentCtrl', ['$scope', '$http', '$location', function ($scope,
             $scope.comments = data;
         });
 
+    $scope.deleteComment = function (id, index) {
+        $http({
+            method: 'DELETE',
+            url: '/api/comment',
+            data: {
+                id: id
+            },
+            headers: {"Content-Type": "application/json;charset=utf-8"}
+        }).then(function (data) {
+                $scope.comments.splice(index, 1);
+            });
+    };
+
 
     $scope.submit = function () {
         $http.post('api/comment', $scope.form)
@@ -110,6 +122,7 @@ app.controller('commentCtrl', ['$scope', '$http', '$location', function ($scope,
                 $scope.form.mealeaten = '';
                 $scope.form.rating = '';
                 $scope.form.additional = '';
+
 
             }, function(err) {
                 console.log(err);
